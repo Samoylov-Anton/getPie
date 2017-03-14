@@ -68,6 +68,12 @@
             <artifactId>spring-webmvc</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.0.0</version>
+        </dependency>
+
         <!-- Other Servlet Web dependencies -->
         <dependency>
             <groupId>javax.servlet</groupId>
@@ -202,14 +208,6 @@
             </plugin>
         </plugins>
 
-        <!--need to find configs in tests in package web-inf like
-        @ContextConfiguration(locations = {"classpath:/config/application-context.xml"
-        -->
-        <testResources>
-            <testResource>
-                <directory>src/main/webapp/WEB-INF/config</directory>
-            </testResource>
-        </testResources>
     </build>
 
 </project>
