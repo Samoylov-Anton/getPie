@@ -50,5 +50,4 @@
     </div><!--/row-->
     </div><!--/.container-->
   </jsp:body>
-
 </page:template>

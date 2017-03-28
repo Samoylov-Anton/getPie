@@ -21,9 +21,9 @@
     <bean id="dataSource"
           class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
         <property name="driverClass" value="org.postgresql.Driver" />
-        <property name="jdbcUrl" value="jdbc:postgresql://localhost:5432/getPie" />
+        <property name="jdbcUrl" value="jdbc:postgresql://localhost:5433/getPie" />
         <property name="user" value="postgres" />
-        <property name="password" value="12345" />
+        <property name="password" value="tjoldl2" />
         <property name="minPoolSize" value="1" />
         <property name="acquireIncrement" value="1" />
         <property name="maxPoolSize" value="1" />

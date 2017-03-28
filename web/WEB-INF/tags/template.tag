@@ -58,6 +58,11 @@
                 <li><a href="/profile">Профиль</a></li>
                 <li><a href="/contact">Контакты</a></li>
             </ul>
+            <select id="user-city" class="pull-right">
+                <option value="1">Москва</option>
+                <option value="2">Казань</option>
+                <option value="3">Санкт-Питербург</option>
+            </select>
             <button type="button" class="btn btn-primary pull-right" style="margin-top:10px;">Войти </button>
         </div><!-- /.nav-collapse -->
     </div><!-- /.container -->
@@ -80,3 +85,17 @@
 </body>
 
 </html>
+
+<script src="http://api-maps.yandex.ru/2.0-stable/?load=package.standard&lang=ru-RU" type="text/javascript"></script>
+<script type="text/javascript">
+    window.onload = function () {
+        if ($("#user-city").val() == null) {
+        var city = ymaps.geolocation.city;
+        if (city == 'Казань') {
+            jQuery("#user-city").val(2);
+        } else {
+            jQuery("#user-city").val(1)
+        }
+    }
+    }
+</script>
