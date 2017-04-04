@@ -89,7 +89,13 @@
                                             type : "GET",
                                             url : "/getCity/"+ val
                                         });
-
+                                        $.get("/getShowCaseList/"+ val,function(x){
+                                            var t='';
+                                            for(var i in x){
+                                                t+='<li>'+x[i]+'</li><br>'
+                                            }
+                                            $('#elemId').html( t)
+                                        });
                                         if (val == '16') {
                                             jQuery("#city").text('Казань');
                                         }
@@ -131,7 +137,7 @@
     window.onload = function (){
         var city = ymaps.geolocation.city;
         var cityFilter = "<%= session.getAttribute("cityId") %>";
-        if (typeof cityFilter == "undefined" || cityFilter == null) {
+        if (typeof cityFilter == "undefined" || cityFilter == "null") {
             if (city == 'Казань') {
                 jQuery("#city").text('Казань');
             } else {

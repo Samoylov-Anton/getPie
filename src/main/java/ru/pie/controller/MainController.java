@@ -7,14 +7,10 @@ import org.springframework.web.servlet.ModelAndView;
 import ru.pie.form.ProfileForm;
 import ru.pie.form.ShowCaseForm;
 import ru.pie.form.ShowCaseMainForm;
-import ru.pie.model.ShowCaseModel;
 import ru.pie.service.MainService;
 import ru.pie.service.ShowCaseImageService;
 import ru.pie.service.ShowCaseService;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-import javax.xml.ws.Response;
 import java.util.List;
 
 /**
@@ -22,6 +18,7 @@ import java.util.List;
  */
 @Controller
 @SessionAttributes("cityId")
+@RequestMapping(value = "/")
 public class MainController {
 
     @Autowired
@@ -41,10 +38,14 @@ public class MainController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/", method= RequestMethod.GET)
+    @RequestMapping(value = "/getShowCaseList/{cityId}", method = RequestMethod.GET ,produces="application/json")
+    public @ResponseBody List<ShowCaseMainForm> getShowCaseList(@PathVariable(value="cityId") int cityId) {
+        return service.getShowCaseList();
+    }
+
+    @RequestMapping(method= RequestMethod.GET)
     public ModelAndView fiendAllShowCase() {
-        List<ShowCaseMainForm> showCaseList = service.getShowCaseList();
-        return new ModelAndView("/index", "showCaseList", showCaseList);
+        return new ModelAndView("/index");
     }
 
     @RequestMapping(value = "/profile/{userId}", method= RequestMethod.GET)
