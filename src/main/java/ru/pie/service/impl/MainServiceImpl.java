@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.pie.form.ShowCaseMainForm;
-import ru.pie.model.ImageShowCaseModel;
 import ru.pie.model.ShowCaseModel;
 import ru.pie.service.MainService;
 import ru.pie.service.ShowCaseImageService;
@@ -36,9 +35,8 @@ public class MainServiceImpl implements MainService {
         List<ShowCaseMainForm> profileFormList = new ArrayList<>();
         List<ShowCaseModel> showCaseModels = showCaseService.getShowCaseList();
         if (!showCaseModels.isEmpty()) {
-            ShowCaseMainForm form = new ShowCaseMainForm();
-
             for (ShowCaseModel model: showCaseModels) {
+                ShowCaseMainForm form = new ShowCaseMainForm();
                 form.setAvatar("https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQMwrBISlBl_ZpX5__JKG6Y7Rk39yk1z0RqTKAtrY91pUqZDdMg");
                 form.setLike(22);
                 form.setMinSum(model.getMinSum());

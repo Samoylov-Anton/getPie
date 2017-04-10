@@ -30,14 +30,6 @@ public class MainController {
     @Autowired
     private ShowCaseImageService showCaseImageService;
 
-    @RequestMapping(value = "/getCity/{cityId}", method = RequestMethod.GET)
-    public ModelAndView processPerson(@PathVariable(value="cityId") int cityId) {
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("/index");
-        modelAndView.addObject("cityId", cityId);
-        return modelAndView;
-    }
-
     @RequestMapping(value = "/getShowCaseList/{cityId}", method = RequestMethod.GET ,produces="application/json")
     public @ResponseBody List<ShowCaseMainForm> getShowCaseList(@PathVariable(value="cityId") int cityId) {
         return service.getShowCaseList();

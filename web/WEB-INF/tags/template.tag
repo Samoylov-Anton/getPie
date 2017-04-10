@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <%@tag description="Template Site tag" pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
-<%@attribute name="title" fragment="true" %>
+<%@attribute name="title" fragment="true"%>
 <html>
 <head>
     <title>
@@ -36,6 +36,9 @@
 
     <spring:url value="/resources/lightbox/js/lightbox.js" var="lightboxJs"/>
     <script src="${lightboxJs}"></script>
+
+    <spring:url value="/resources/js/main.js" var="mainJs"/>
+    <script src="${mainJs}" charset="utf-8"></script>
 
 </head>
 
@@ -82,30 +85,6 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-primary" onclick="show();">Выбрать</button>
-                                <script type="text/javascript">
-                                    function show() {
-                                        var val = $("input[name='optradio']:checked").val();
-                                        $.ajax({
-                                            type : "GET",
-                                            url : "/getCity/"+ val
-                                        });
-                                        $.get("/getShowCaseList/"+ val,function(x){
-                                            var t='';
-                                            for(var i in x){
-                                                t+='<li>'+x[i]+'</li><br>'
-                                            }
-                                            $('#elemId').html( t)
-                                        });
-                                        if (val == '16') {
-                                            jQuery("#city").text('Казань');
-                                        }
-                                        if (val == '77') {
-                                            jQuery("#city").text('Москва');
-                                        }
-
-                                        $('#cityModal').modal('hide');
-                                    }
-                                </script>
                             </div>
                         </form>
 
@@ -132,26 +111,11 @@
 </div>
 
 </body>
-<script src="http://api-maps.yandex.ru/2.0-stable/?load=package.standard&lang=ru-RU" type="text/javascript"></script>
+<script src="http://api-maps.yandex.ru/2.0-stable/?load=package.standard&lang=ru_RU" type="text/javascript">
+</script>
 <script type="text/javascript">
-    window.onload = function (){
-        var city = ymaps.geolocation.city;
-        var cityFilter = "<%= session.getAttribute("cityId") %>";
-        if (typeof cityFilter == "undefined" || cityFilter == "null") {
-            if (city == 'Казань') {
-                jQuery("#city").text('Казань');
-            } else {
-                jQuery("#city").text('Москва');
-            }
-        } else {
-            if (cityFilter == '16') {
-                jQuery("#city").text('Казань');
-            }
-            if (cityFilter == '77') {
-                jQuery("#city").text('Москва');
-            }
-        }
-        $('input:radio[name="optradio"]').filter('[value=' + cityFilter + ']').prop("checked", true);
-    }
+    ymaps.ready(function(){
+        window.onload = reloadPage();
+    });
 </script>
 </html>
