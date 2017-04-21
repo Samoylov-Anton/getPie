@@ -8,5 +8,5 @@ import java.util.List;
  * Created by user on 28.02.17.
  */
 public interface MainService {
-    List<ShowCaseMainForm> getShowCaseList();
+    List<ShowCaseMainForm> getShowCaseList(Integer cityId);
 }

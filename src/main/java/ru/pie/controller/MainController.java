@@ -32,7 +32,7 @@ public class MainController {
 
     @RequestMapping(value = "/getShowCaseList/{cityId}", method = RequestMethod.GET ,produces="application/json")
     public @ResponseBody List<ShowCaseMainForm> getShowCaseList(@PathVariable(value="cityId") int cityId) {
-        return service.getShowCaseList();
+        return service.getShowCaseList(cityId);
     }
 
     @RequestMapping(method= RequestMethod.GET)

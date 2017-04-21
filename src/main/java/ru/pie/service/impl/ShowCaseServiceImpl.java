@@ -19,10 +19,10 @@ public class ShowCaseServiceImpl implements ShowCaseService {
     @PersistenceContext
     private EntityManager entityManager;
 
-    public List<ShowCaseModel> getShowCaseList(){
+    public List<ShowCaseModel> getShowCaseList(Integer cityId){
         return   entityManager.createQuery("SELECT new ru.pie.model.ShowCaseModel(pe.id, pe.name,pe.note," +
-                        " pe.fromDt, pe.userId, pe.showCaseTypeId, pe.minSum) FROM ShowCaseEntity pe "
-                , ShowCaseModel.class).setMaxResults(10).getResultList();
+                        " pe.fromDt, pe.userId, pe.showCaseTypeId, pe.minSum) FROM ShowCaseEntity pe where pe.cityId = :cityId"
+                , ShowCaseModel.class).setParameter("cityId", cityId).setMaxResults(10).getResultList();
     }
 
     @Override

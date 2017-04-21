@@ -8,6 +8,8 @@ import java.util.List;
  * Created by user on 28.02.17.
  */
 public class ShowCaseMainForm {
+    private Integer id;
+    private String name;
     private String avatar;
     private String note;
     private List<ImageShowCaseModel> imageList;
@@ -15,6 +17,22 @@ public class ShowCaseMainForm {
     private Integer minSum;
 
     public ShowCaseMainForm() {
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getAvatar() {

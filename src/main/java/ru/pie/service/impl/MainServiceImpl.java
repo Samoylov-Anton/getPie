@@ -30,13 +30,15 @@ public class MainServiceImpl implements MainService {
     @Autowired
     private ShowCaseService showCaseService;
 
-    public List<ShowCaseMainForm> getShowCaseList(){
+    public List<ShowCaseMainForm> getShowCaseList(Integer cityId){
 
         List<ShowCaseMainForm> profileFormList = new ArrayList<>();
-        List<ShowCaseModel> showCaseModels = showCaseService.getShowCaseList();
+        List<ShowCaseModel> showCaseModels = showCaseService.getShowCaseList(cityId);
         if (!showCaseModels.isEmpty()) {
             for (ShowCaseModel model: showCaseModels) {
                 ShowCaseMainForm form = new ShowCaseMainForm();
+                form.setId(model.getId());
+                form.setName(model.getName());
                 form.setAvatar("https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQMwrBISlBl_ZpX5__JKG6Y7Rk39yk1z0RqTKAtrY91pUqZDdMg");
                 form.setLike(22);
                 form.setMinSum(model.getMinSum());

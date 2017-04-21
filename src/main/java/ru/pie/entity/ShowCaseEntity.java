@@ -33,6 +33,9 @@ public class ShowCaseEntity {
     @Column(name="min_sum")
     private Integer minSum;
 
+    @Column(name = "city_id")
+    private Integer cityId;
+
     public ShowCaseEntity() {
     }
 
@@ -90,5 +93,13 @@ public class ShowCaseEntity {
 
     public void setMinSum(Integer minSum) {
         this.minSum = minSum;
+    }
+
+    public Integer getCityId() {
+        return cityId;
+    }
+
+    public void setCityId(Integer cityId) {
+        this.cityId = cityId;
     }
 }
