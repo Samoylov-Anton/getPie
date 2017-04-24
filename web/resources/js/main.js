@@ -22,7 +22,7 @@ function getContent(cityId) {
         for (var i in x) {
             t += '<div class="jumbotron" style="padding-bottom: 5px; padding-top: 8px;"><div class="row">' +
                 '<img src="' + x[i].avatar + '" class="img-rounded pull-left" style="height: 50px; width: 50px;margin-right: 5px;"/>' +
-                '<h4 style="margin-bottom: 0px;"><a href="/profile/' + x[i].id + '" style = "color: #222222; margin-bottom: 0px;">' + x[i].name +'</a></h4><br>' +
+                '<h4 style="margin-bottom: 0px;"><a href="/showCase/' + x[i].id + '" style = "color: #222222; margin-bottom: 0px;">' + x[i].name +'</a></h4><br>' +
                 '<span style="height: 50px;">' + x[i].note + '</span></div><div class="row" style="margin-top: 5px;">';
             for (var a in x[i].imageList) {
                 t += '<div class= "col-xs-5 col-sm-3" ><a rel = "lightbox" href = "' + x[i].imageList[a].image + '">' +

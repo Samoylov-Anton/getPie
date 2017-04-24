@@ -9,6 +9,7 @@ import java.util.List;
  */
 public class ShowCaseForm {
     private Integer id;
+    private String avatar;
     private String note;
     private String name;
     private List<ImageShowCaseModel> imageList;
@@ -23,6 +24,14 @@ public class ShowCaseForm {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
     }
 
     public String getNote() {

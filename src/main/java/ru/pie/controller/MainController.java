@@ -53,6 +53,14 @@ public class MainController {
         ShowCaseForm model = new ShowCaseForm();
         model.setName("test");
         model.setImageList(showCaseImageService.getImageListByCaseId(id));
+        return new ModelAndView("/showCaseEdit", "modelValue", model);
+    }
+
+    @RequestMapping(value = "/showCase/{id}", method= RequestMethod.GET)
+    public ModelAndView showCase( @PathVariable(value="id") int id) {
+        ShowCaseForm model = new ShowCaseForm();
+        model.setName("test");
+        model.setImageList(showCaseImageService.getImageListByCaseId(id));
         return new ModelAndView("/showCase", "modelValue", model);
     }
 }
