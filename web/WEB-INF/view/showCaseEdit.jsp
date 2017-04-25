@@ -31,20 +31,35 @@
                             <label for="showCaseNote">Описание</label>
                             <textarea class="form-control" rows="5" id="showCaseNote" name="note"></textarea>
                         </div>
-                        <div>
-                            <label>Добавить фото:</label>
-                            <c:forEach items="${modelValue.imageList}" var="imageList">
-                                <div class="row fluid">
-                                    <a rel="lightbox" href="${imageList.image}">
-                                        <img src="${imageList.image}" class="img-rounded"
-                                             style="height: 150px; width: 150px; display: block;">
-                                    </a>
-                                    <textarea class="form-control" rows="2"
-                                              style="margin-bottom: 10px;">${imageList.note}</textarea>
-                                </div>
-                            </c:forEach>
-                        </div>
                     </form>
+                        <button type="submit" data-toggle="modal" data-target="#addPhoto" class="btn btn-primary pull-left" style="margin-bottom: 10px;">Добавить фото</button>
+                    <div class="modal fade" role="dialog" id="addPhoto" tabindex="-1" aria-labelledby="gridModalLabel"
+                         data-backdrop="false" style="background-color: rgba(0, 0, 0, 0.5); display: none;">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                            aria-hidden="true">×</span></button>
+                                    <h4 class="modal-title" id="cityModalLabel">Добавить фото</h4></div>
+                                <form action="/file-upload/${modelValue.id}" class="dropzone">
+                                    <div class="fallback">
+                                        <input name="file" type="file" multiple />
+                                    </div>
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-9">
+                        <c:forEach items="${modelValue.imageList}" var="imageList">
+                            <div class="col-xs-5 col-sm-3">
+                                <a rel="lightbox" href="${imageList.image}">
+                                    <img src="${imageList.image}" class="img-rounded"
+                                         style="height: 150px; width: 150px; display: block;">
+                                </a>
+                            </div>
+                        </c:forEach>
+                    </div>
 
                 </div><!--/.col-xs-12.col-sm-9-->
 

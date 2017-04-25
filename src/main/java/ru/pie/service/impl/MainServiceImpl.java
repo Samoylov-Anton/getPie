@@ -9,8 +9,6 @@ import ru.pie.service.MainService;
 import ru.pie.service.ShowCaseImageService;
 import ru.pie.service.ShowCaseService;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,9 +19,6 @@ import java.util.List;
 @Service
 @Transactional
 public class MainServiceImpl implements MainService {
-
-    @PersistenceContext
-    private EntityManager entityManager;
 
     @Autowired
     private ShowCaseImageService showCaseImageService;
@@ -44,7 +39,7 @@ public class MainServiceImpl implements MainService {
                 form.setMinSum(model.getMinSum());
                 form.setNote(model.getNote());
 
-                form.setImageList(showCaseImageService.getImageListByCaseId(model.getId()));
+                form.setImageList(showCaseImageService.getImageListByCaseId(model.getId()).subList(0,4));
                 profileFormList.add(form);
             }
         }

@@ -19,8 +19,11 @@
     <link href="${startertemplate}" rel="stylesheet"/>
 
     <!-- Custom Fonts -->
-    <spring:url value="/resources/font-awesome/css/font-awesome.min.css" var="fontawesome"/>
+    <spring:url value="/resources/css/font-awesome.min.css" var="fontawesome"/>
     <link href="${fontawesome}" rel="stylesheet"/>
+
+    <spring:url value="/resources/css/dropzone.css" var="dropzoneCss"/>
+    <link href="${dropzoneCss}" rel="stylesheet"/>
 
     <!-- jQuery -->
     <spring:url value="/resources/js/jquery-2.1.4.min.js" var="jqueryjs"/>
@@ -39,6 +42,9 @@
 
     <spring:url value="/resources/js/main.js" var="mainJs"/>
     <script src="${mainJs}" charset="utf-8"></script>
+
+    <spring:url value="/resources/js/dropzone.js" var="dropzone"/>
+    <script src="${dropzone}" charset="utf-8"></script>
 
 </head>
 
