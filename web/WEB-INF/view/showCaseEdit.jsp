@@ -36,14 +36,57 @@
                     <div class="modal fade" role="dialog" id="addPhoto" tabindex="-1" aria-labelledby="gridModalLabel"
                          data-backdrop="false" style="background-color: rgba(0, 0, 0, 0.5); display: none;">
                         <div class="modal-dialog" role="document">
-                            <div class="modal-content">
+                            <div class="modal-content" style="width: 800px; height: 900px;">
                                 <div class="modal-header">
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                                             aria-hidden="true">×</span></button>
                                     <h4 class="modal-title" id="cityModalLabel">Добавить фото</h4></div>
-                                <form action="/file-upload/${modelValue.id}" class="dropzone">
+                                <%--<form  class="dropzone">
                                     <div class="fallback">
                                         <input name="file" type="file" multiple />
+                                    </div>
+                                </form>--%>
+                                <form action="/file-upload/${modelValue.id}" method="POST" enctype="multipart/form-data">
+                                    <input type="file" id="files" name="files"/>
+                                    <div id="photo" style="width: 800px; height: 600px;"></div>
+                                    <script>
+                                        var showFile = (function () {
+                                            var fr = new FileReader,
+                                                    i = 0,
+                                                    files, file;
+
+                                            fr.onload = function (e) {
+                                                var p;
+                                                if (file.type.match('image.*')) {
+                                                    p = '<img id="p" src="' + e.target.result + '" style="width: 100%; height: 100%; object-fit: cover;">';
+                                                    $('#photo').html(p);
+                                                }
+                                                file = files[++i];
+                                                if (file) {
+                                                    fr.readAsDataURL(file)
+                                                } else {
+                                                    i = 0;
+                                                }
+                                            };
+
+                                            return function (e) {
+                                                files = e.target.files;
+                                                file = files[i];
+                                                if (files) {
+                                                    while (i < files.length && !file.type.match('image.*')) {
+                                                        file = files[++i];
+                                                    }
+                                                    if (file) fr.readAsDataURL(files[i])
+                                                }
+                                            }
+
+                                        })();
+
+                                        document.getElementById('files').addEventListener('change', showFile, false);
+
+                                    </script>
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn btn-primary">Сохранить</button>
                                     </div>
                                 </form>
 

@@ -43,7 +43,7 @@ public class MainController {
     }
 
     @RequestMapping(value = "/file-upload/{id}", method = RequestMethod.POST ,produces="application/json")
-    public ResponseEntity upload(@RequestParam("file") MultipartFile file, @PathVariable(value="id") int id) {
+    public ResponseEntity upload(@RequestParam("files") MultipartFile file, @PathVariable(value="id") int id) {
 
         if (file.isEmpty()) {
             return new ResponseEntity<>("{}", HttpStatus.INTERNAL_SERVER_ERROR);
