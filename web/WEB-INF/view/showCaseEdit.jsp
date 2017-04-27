@@ -47,7 +47,11 @@
                                     </div>
                                 </form>--%>
                                 <form action="/file-upload/${modelValue.id}" method="POST" enctype="multipart/form-data">
-                                    <input type="file" id="files" name="files"/>
+                                    <label class="custom-file-upload" style="display: inline-block; padding: 6px 12px; cursor: pointer;">
+                                        <span class="btn btn-primary btn-file">
+                                            Выбрать...<input type="file" id="files" name="files" style="display: none;"/>
+                                        </span>
+                                    </label>
                                     <div id="photo" style="width: 800px; height: 600px;"></div>
                                     <script>
                                         var showFile = (function () {
@@ -58,7 +62,7 @@
                                             fr.onload = function (e) {
                                                 var p;
                                                 if (file.type.match('image.*')) {
-                                                    p = '<img id="p" src="' + e.target.result + '" style="width: 100%; height: 100%; object-fit: cover;">';
+                                                    p = '<img class="img-thumbnail" id="p" src="' + e.target.result + '" style="height: 100%; object-fit: cover; display:block; margin:15px auto 25px;">';
                                                     $('#photo').html(p);
                                                 }
                                                 file = files[++i];

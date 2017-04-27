@@ -22,9 +22,6 @@
     <spring:url value="/resources/css/font-awesome.min.css" var="fontawesome"/>
     <link href="${fontawesome}" rel="stylesheet"/>
 
-    <spring:url value="/resources/imgareaselect/css/imgareaselect-default.css" var="imgareaselectDefault"/>
-    <link href="${imgareaselectDefault}" rel="stylesheet"/>
-
     <!-- jQuery -->
     <spring:url value="/resources/js/jquery-2.1.4.min.js" var="jqueryjs"/>
     <script src="${jqueryjs}"></script>
@@ -42,9 +39,6 @@
 
     <spring:url value="/resources/js/main.js" var="mainJs"/>
     <script src="${mainJs}" charset="utf-8"></script>
-
-    <spring:url value="/resources/imgareaselect/scripts/jquery.imgareaselect.js" var="imgareaselectJs"/>
-    <script src="${imgareaselectJs}" charset="utf-8"></script>
 
 </head>
 
