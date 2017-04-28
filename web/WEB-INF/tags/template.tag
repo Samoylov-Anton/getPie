@@ -15,12 +15,15 @@
     <link href="${bootstrap}" rel="stylesheet"/>
 
     <!-- Custom CSS -->
-    <spring:url value="/resources/css/offcanvas.css" var="startertemplate"/>
-    <link href="${startertemplate}" rel="stylesheet"/>
+    <spring:url value="/resources/css/offcanvas.css" var="starterTemplate"/>
+    <link href="${starterTemplate}" rel="stylesheet"/>
+
+    <spring:url value="/resources/css/flat-ui.css" var="flatCss"/>
+    <link href="${flatCss}" rel="stylesheet"/>
 
     <!-- Custom Fonts -->
-    <spring:url value="/resources/css/font-awesome.min.css" var="fontawesome"/>
-    <link href="${fontawesome}" rel="stylesheet"/>
+    <%--<spring:url value="/resources/css/font-awesome.min.css" var="fontawesome"/>
+    <link href="${fontawesome}" rel="stylesheet"/>--%>
 
     <!-- jQuery -->
     <spring:url value="/resources/js/jquery-2.1.4.min.js" var="jqueryjs"/>

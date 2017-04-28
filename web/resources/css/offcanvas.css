@@ -130,13 +130,6 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, nav, 
 .text-primary {
     color: #428bca;
 }
-p {
-    display: block;
-    -webkit-margin-before: 1em;
-    -webkit-margin-after: 1em;
-    -webkit-margin-start: 0px;
-    -webkit-margin-end: 0px;
-}
 .group-rom {
     width: 100%;
     float: left;
