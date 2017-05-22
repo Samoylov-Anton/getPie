@@ -78,12 +78,13 @@
                                 </section><!-- /MAIN CONTENT -->
                             </div>
                             <div class="tab-pane fade" role="tabpanel" id="profile" aria-labelledby="profile-tab">
+                                <button class="btn btn-primary pull-right" style="margin-top:10px;" onclick="window.location.href='/showCase/create'">Добавить витрину</button>
                                 <c:forEach items="${profileValue.caseModelList}" var="showCaseList">
                                 <div class="jumbotron">
                                     <div class="panel panel-default" style="margin-top: 10px;">
                                     <div class="panel-body">
                                         <span><p>${showCaseList.name}</p></span>
-                                        <button class="btn btn-primary pull-right" style="margin-top:10px;" onclick="window.location.href='/showCase/${showCaseList.id}/edit'">Редактировать</button>
+                                        <button class="btn btn-primary pull-right" style="margin-top:10px;" onclick="window.location.href='/showCase/edit/${showCaseList.id}'">Редактировать</button>
                                     </div>
                                    </div>
                                 </div>

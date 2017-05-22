@@ -39,7 +39,7 @@ public class MainServiceImpl implements MainService {
                 form.setMinSum(model.getMinSum());
                 form.setNote(model.getNote());
 
-                form.setImageList(showCaseImageService.getImageListByCaseId(model.getId()).subList(0,4));
+                form.setImageList(showCaseImageService.getImageListByCaseId(model.getId()));
                 profileFormList.add(form);
             }
         }

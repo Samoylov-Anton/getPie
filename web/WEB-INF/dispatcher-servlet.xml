@@ -39,7 +39,7 @@
 
     <mvc:view-controller path="/" view-name="/index"/>
     <mvc:view-controller path="/profile" view-name="/profile"/>
-    <mvc:view-controller path="/showCase" view-name="/showCase"/>
+    <mvc:view-controller path="/showCase" view-name="/showCaseView"/>
 
 
     <!-- Static Resources Configuration (get access to static sources such as CSS and JavaScript files) -->

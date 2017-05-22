@@ -116,9 +116,5 @@
 </body>
 <script src="http://api-maps.yandex.ru/2.0-stable/?load=package.standard&lang=ru_RU" type="text/javascript">
 </script>
-<script type="text/javascript">
-    ymaps.ready(function(){
-        window.onload = reloadPage();
-    });
-</script>
+
 </html>

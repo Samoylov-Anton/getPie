@@ -29,3 +29,8 @@
     </div><!--/.container-->
   </jsp:body>
 </page:template>
+<script type="text/javascript">
+  ymaps.ready(function(){
+    window.onload = reloadPage();
+  });
+</script>
