@@ -1,5 +1,7 @@
 package ru.pie.entity;
 
+import ru.pie.form.ShowCaseDTO;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -11,8 +13,9 @@ import java.util.Date;
 public class ShowCaseEntity {
 
     @Id
-    @GeneratedValue(generator = "show_case_gen")
-    @SequenceGenerator(name = "show_case_gen", sequenceName = "show_case_seq")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "show_case_gen")
+    @SequenceGenerator(name = "show_case_gen", sequenceName = "show_case_seq",
+            allocationSize = 1)
     private Integer id;
 
     @Column(name="name")
@@ -37,6 +40,15 @@ public class ShowCaseEntity {
     private Integer cityId;
 
     public ShowCaseEntity() {
+    }
+
+    public void populateFrom(ShowCaseDTO showCaseDTO) {
+        this.name = showCaseDTO.getName();
+        this.minSum = showCaseDTO.getMinSum();
+        this.note = showCaseDTO.getNote();
+        this.fromDt = new Date();
+        this.showCaseTypeId = showCaseDTO.getShowCaseTypeId();
+        this.cityId = 16;
     }
 
     public Integer getId() {

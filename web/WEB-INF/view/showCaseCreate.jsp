@@ -14,13 +14,21 @@
 
       <div class="row row-offcanvas row-offcanvas-right">
         <div class="col-xs-12 col-sm-9">
-          <form class="form">
+          <form class="form" onSubmit="return createShowCase()">
             <div class="row" style="margin-left:0;">
-            <button class="btn btn-primary pull-left" onclick="createShowCase()">Сохранить</button>
+            <button class="btn btn-primary pull-left">Сохранить</button>
               </div>
             <div>
               <label for="showCaseName">Название</label>
               <input type="text" class="form-control" id="showCaseName" name="name">
+            </div>
+            <div class="form-group">
+              <label for="sel">Тип витрины</label>
+              <select class="form-control" id="sel" name="type">
+                <option value ="1">Торты</option>
+                <option value ="2">Капкейки</option>
+                <option value ="3">Пироги</option>
+              </select>
             </div>
             <div>
               <label for="showCaseminSum">Минимальная сумма</label>
@@ -28,19 +36,24 @@
             </div>
             <div>
               <label for="showCaseNote">Описание</label>
-              <textarea class="form-control" rows="5" id="showCaseNote" name="note"></textarea>
+              <textarea class="form-control" rows="3" id="showCaseNote" name="note"></textarea>
             </div>
           </form>
-          <script>
+          <script type="text/javascript">
             function createShowCase() {
+              var arr = { name: $('input[name="name"]').val(), minSum: $('input[name="minSum"]').val(), note: $('textarea[name="note"]').val(),
+                showCaseTypeId: $('select[name="type"]').val()};
               $.ajax({
                 url: '/showCase/create/action',
                 type: 'POST',
-                data: 'name=' + $('input[name="name"]').val() + '&minSum=' + $('input[name="minSum"]').val() + '&note=' + $('input[name="note"]').val(),
+                data: JSON.stringify(arr),
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
 
                 success: function(result) {
                   if (result != null) {
-                    window.location = "/showCase/edit/" + result;
+                    window.location.assign("/showCase/edit/" + result);
+                    return false;
                   }
                 },
                 error: function() {
@@ -49,7 +62,6 @@
               });
             }
           </script>
-
         </div><!--/.col-xs-12.col-sm-9-->
 
         <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar">

@@ -2,6 +2,8 @@ package ru.pie.service.impl;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import ru.pie.entity.ShowCaseEntity;
+import ru.pie.form.ShowCaseDTO;
 import ru.pie.model.ShowCaseModel;
 import ru.pie.service.ShowCaseService;
 
@@ -18,6 +20,25 @@ public class ShowCaseServiceImpl implements ShowCaseService {
 
     @PersistenceContext
     private EntityManager entityManager;
+
+    @Override
+    public Integer saveShowCase(ShowCaseDTO showCase){
+        ShowCaseEntity showCaseEntity;
+        if (showCase.getId() == null) {
+            showCaseEntity = new ShowCaseEntity();
+            showCaseEntity.populateFrom(showCase);
+            entityManager.persist(showCaseEntity);
+        } else {
+            showCaseEntity = entityManager.getReference(ShowCaseEntity.class, showCase.getId());
+            showCaseEntity.populateFrom(showCase);
+        }
+        return showCaseEntity.getId();
+    }
+
+    public ShowCaseDTO getShowCaseEdit(Integer showCaseId){
+        return entityManager.createQuery("SELECT new ru.pie.form.ShowCaseDTO(sce.id, sce.name, sce.minSum,sce.note, sce.showCaseTypeId) " +
+                " from ShowCaseEntity sce where sce.id = :id", ShowCaseDTO.class).setParameter("id", showCaseId).getSingleResult();
+    }
 
     public List<ShowCaseModel> getShowCaseList(Integer cityId){
         return   entityManager.createQuery("SELECT new ru.pie.model.ShowCaseModel(pe.id, pe.name,pe.note," +

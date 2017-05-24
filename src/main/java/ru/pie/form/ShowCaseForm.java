@@ -12,6 +12,7 @@ public class ShowCaseForm {
     private String avatar;
     private String note;
     private String name;
+    private Integer type;
     private List<ImageShowCaseModel> imageList;
     private Integer minSum;
 
@@ -64,5 +65,13 @@ public class ShowCaseForm {
 
     public void setMinSum(Integer minSum) {
         this.minSum = minSum;
+    }
+
+    public Integer getType() {
+        return type;
+    }
+
+    public void setType(Integer type) {
+        this.type = type;
     }
 }
