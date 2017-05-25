@@ -12,10 +12,11 @@ import ru.pie.form.ShowCaseForm;
 import ru.pie.service.ShowCaseImageService;
 import ru.pie.service.ShowCaseService;
 
+import javax.imageio.ImageIO;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 
 /**
  * Created by asamoilov on 22.05.2017.
@@ -38,9 +39,15 @@ public class ShowCaseController {
         }
 
         try {
-            byte[] bytes = file.getBytes();
-            Path path = Paths.get("C:\\file\\" + file.getOriginalFilename());
-            Files.write(path, bytes);
+            BufferedImage originalImage = ImageIO.read(file.getInputStream());
+            int width = 800;
+            int height = 600;
+            Image image = originalImage.getScaledInstance(width, height, Image.SCALE_AREA_AVERAGING);
+            BufferedImage changedImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+            Graphics2D g2d = changedImage.createGraphics();
+            g2d.drawImage(image, 0, 0, null);
+            g2d.dispose();
+            ImageIO.write(changedImage, "jpg", new File("c:\\file\\" + file.getOriginalFilename()));
 
         } catch (IOException e) {
             e.printStackTrace();

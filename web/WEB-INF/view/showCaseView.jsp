@@ -36,8 +36,8 @@
                                     <div class="row">
                                         <c:forEach items="${modelValue.imageList}" var="showImage">
                                             <div class="col-xs-5 col-sm-3" style="height: 120px; width: 120px; padding: 0px; margin-right: 10px;margin-left: 10px;">
-                                                <a rel="lightbox" href="${showImage.image}">
-                                                <img src="${showImage.image}" class="img-rounded"
+                                                <a rel="lightbox" href="/images/${showImage.image}">
+                                                <img src="/images/${showImage.image}" class="img-rounded"
                                                      style="width: 100%; height: 100%; object-fit: cover;">
                                             </a></div>
 
