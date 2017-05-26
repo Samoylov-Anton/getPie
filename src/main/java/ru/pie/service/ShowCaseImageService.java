@@ -9,4 +9,5 @@ import java.util.List;
  */
 public interface ShowCaseImageService {
     List<ImageShowCaseModel> getImageListByCaseId(Integer showCaseId);
+    List<ImageShowCaseModel> getLimitImageListByCaseId(Integer showCaseId);
 }

@@ -21,9 +21,16 @@ public class ShowCaseImageServiceImpl implements ShowCaseImageService {
 
     @Override
     public List<ImageShowCaseModel> getImageListByCaseId(Integer showCaseId){
-        return entityManager.createQuery("SELECT new ru.pie.model.ImageShowCaseModel(sci.url, sci.note) " +
+        return entityManager.createQuery("SELECT new ru.pie.model.ImageShowCaseModel(sci.largePath, sci.litePath, sci.note) " +
                         "FROM ShowCaseImageEntity sci where sci.showCaseId = :showCaseId"
                 , ImageShowCaseModel.class).setParameter("showCaseId", showCaseId).getResultList();
+    }
+
+    @Override
+    public List<ImageShowCaseModel> getLimitImageListByCaseId(Integer showCaseId){
+        return entityManager.createQuery("SELECT new ru.pie.model.ImageShowCaseModel(sci.largePath, sci.litePath, sci.note) " +
+                "FROM ShowCaseImageEntity sci where sci.showCaseId = :showCaseId"
+                , ImageShowCaseModel.class).setParameter("showCaseId", showCaseId).setMaxResults(5).getResultList();
     }
 }
 

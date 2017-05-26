@@ -13,6 +13,7 @@
 	   http://www.springframework.org/schema/tx
        http://www.springframework.org/schema/tx/spring-tx.xsd">
 
+    <context:property-placeholder location="classpath*:app.properties"/>
 
     <!-- context:component-scan This tag will scan @Component, @Repository, @Service, @Controller
          and also resolves @Autowired and @Qualifier -->
@@ -43,7 +44,7 @@
 
     <!-- Static Resources Configuration (get access to static sources such as CSS and JavaScript files) -->
     <mvc:resources mapping="/resources/**" location="/resources/" />
-    <mvc:resources mapping="/images/**" location="file:c://file/"/>
+    <mvc:resources mapping="/images/**" location="file:${image.path.root}"/>
     <!-- themes can be put in different folder such as
         <mvc:resources mapping="/resources/**" location="/resources/themeBlue" />
         <mvc:resources mapping="/resources/**" location="/resources/themeGreen" />

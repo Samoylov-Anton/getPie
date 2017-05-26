@@ -25,8 +25,8 @@ function getContent(cityId) {
                 '<h5 style="margin-bottom: 0px;"><a href="/showCase/' + x[i].id + '" style = "color: #34495e; margin-bottom: 0px;">' + x[i].name +'</a></h5><br>' +
                 '<p style="height: 50px;font-size: 86%; line-height: 2.067;">' + x[i].note + '</p></div><div class="row" style="margin-top: 5px;">';
             for (var a in x[i].imageList) {
-                t += '<div class= "col-xs-5 col-sm-3" style="height: 120px; width: 120px; padding: 0px; margin-right: 10px;margin-left: 10px;"><a rel = "lightbox" href = "/images/' + x[i].imageList[a].image + '">' +
-                    '<img src = "/images/' + x[i].imageList[a].image + '" class = "img-rounded" style = "width: 100%; height: 100%; object-fit: cover;">' +
+                t += '<div class= "col-xs-5 col-sm-3" style="height: 120px; width: 120px; padding: 0px; margin-right: 10px;margin-left: 10px;"><a rel = "lightbox" href = "/images/' + x[i].imageList[a].largePath + '">' +
+                    '<img src = "/images/' + x[i].imageList[a].litePath + '" class = "img-rounded" style = "width: 100%; height: 100%; object-fit: cover;">' +
                     '</a > </div >';
             }
             t += '<div class="pull-right" style="margin-top:10px;"><h4>' +

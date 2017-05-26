@@ -1,21 +1,17 @@
 package ru.pie.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+import ru.pie.form.ImageDTO;
 import ru.pie.form.ShowCaseDTO;
 import ru.pie.form.ShowCaseForm;
+import ru.pie.service.ImageService;
 import ru.pie.service.ShowCaseImageService;
 import ru.pie.service.ShowCaseService;
 
-import javax.imageio.ImageIO;
-import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 
 /**
@@ -24,6 +20,7 @@ import java.io.IOException;
 @Controller
 @RequestMapping(value = "/showCase")
 public class ShowCaseController {
+    private Integer userId = 1;
 
     @Autowired
     private ShowCaseImageService showCaseImageService;
@@ -31,29 +28,18 @@ public class ShowCaseController {
     @Autowired
     private ShowCaseService showCaseService;
 
+    @Autowired
+    private ImageService imageService;
+
     @RequestMapping(value = "/file-upload/{id}", method = RequestMethod.POST ,produces="application/json")
-    public ResponseEntity upload(@RequestParam("files") MultipartFile file, @PathVariable(value="id") int id) {
+    public String upload(@RequestParam("files") MultipartFile file, @PathVariable(value="id") int id) throws IOException {
 
         if (file.isEmpty()) {
-            return new ResponseEntity<>("{}", HttpStatus.INTERNAL_SERVER_ERROR);
+            return "";
         }
+        imageService.save(new ImageDTO(file, id, userId, null));
 
-        try {
-            BufferedImage originalImage = ImageIO.read(file.getInputStream());
-            int width = 800;
-            int height = 600;
-            Image image = originalImage.getScaledInstance(width, height, Image.SCALE_AREA_AVERAGING);
-            BufferedImage changedImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
-            Graphics2D g2d = changedImage.createGraphics();
-            g2d.drawImage(image, 0, 0, null);
-            g2d.dispose();
-            ImageIO.write(changedImage, "jpg", new File("c:\\file\\" + file.getOriginalFilename()));
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        return new ResponseEntity<>("{}", HttpStatus.OK);
+        return "redirect:/showCase/edit/" + id;
     }
 
     @RequestMapping(value = "/edit/{id}", method= RequestMethod.GET)

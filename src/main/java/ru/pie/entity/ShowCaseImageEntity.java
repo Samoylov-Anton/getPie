@@ -15,8 +15,11 @@ public class ShowCaseImageEntity {
     @SequenceGenerator(name = "show_case_image_gen", sequenceName = "show_case_image_seq")
     private Integer id;
 
-    @Column(name="url")
-    private String url;
+    @Column(name="large_path")
+    private String largePath;
+
+    @Column(name="lite_path")
+    private String litePath;
 
     @Column(name="note")
     private String note;
@@ -41,12 +44,20 @@ public class ShowCaseImageEntity {
         this.id = id;
     }
 
-    public String getUrl() {
-        return url;
+    public String getLargePath() {
+        return largePath;
     }
 
-    public void setUrl(String url) {
-        this.url = url;
+    public void setLargePath(String largePath) {
+        this.largePath = largePath;
+    }
+
+    public String getLitePath() {
+        return litePath;
+    }
+
+    public void setLitePath(String litePath) {
+        this.litePath = litePath;
     }
 
     public String getNote() {

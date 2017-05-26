@@ -129,10 +129,9 @@
                     </div>
                     <div class="col-xs-12 col-sm-9">
                         <c:forEach items="${modelValue.imageList}" var="imageList">
-                            <div class="col-xs-5 col-sm-3">
-                                <a rel="lightbox" href="/images/${imageList.image}">
-                                    <img src="/images/${imageList.image}" class="img-rounded"
-                                         style="height: 150px; width: 150px; display: block;">
+                            <div class="col-xs-5 col-sm-3" style="height: 120px; width: 120px; padding: 0px; margin-right: 10px;margin-left: 10px;">
+                                <a rel="lightbox" href="/images/${imageList.largePath}">
+                                    <img src="/images/${imageList.litePath}" class="img-rounded" style = "width: 100%; height: 100%; object-fit: cover;">
                                 </a>
                             </div>
                         </c:forEach>
