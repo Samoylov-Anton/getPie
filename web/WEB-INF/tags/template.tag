@@ -10,9 +10,8 @@
         <jsp:invoke fragment="title"/>
     </title>
 
-    <!-- Bootstrap Core CSS -->
-    <spring:url value="/resources/css/bootstrap.css" var="bootstrap"/>
-    <link href="${bootstrap}" rel="stylesheet"/>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
     <!-- Custom CSS -->
     <spring:url value="/resources/css/offcanvas.css" var="starterTemplate"/>
@@ -21,23 +20,17 @@
     <spring:url value="/resources/css/flat-ui.css" var="flatCss"/>
     <link href="${flatCss}" rel="stylesheet"/>
 
-    <!-- Custom Fonts -->
-    <%--<spring:url value="/resources/css/font-awesome.min.css" var="fontawesome"/>
-    <link href="${fontawesome}" rel="stylesheet"/>--%>
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-    <!-- jQuery -->
-    <spring:url value="/resources/js/jquery-2.1.4.min.js" var="jqueryjs"/>
-    <script src="${jqueryjs}"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <spring:url value="/resources/js/bootstrap.min.js" var="js"/>
-    <script src="${js}"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <!--lighbox-->
-    <spring:url value="/resources/lightbox/css/lightbox.css" var="lightboxCss"/>
+    <spring:url value="/resources/lightbox/css/lightbox.min.css" var="lightboxCss"/>
     <link href="${lightboxCss}" rel="stylesheet"/>
 
-    <spring:url value="/resources/lightbox/js/lightbox.js" var="lightboxJs"/>
+    <spring:url value="/resources/lightbox/js/lightbox.min.js" var="lightboxJs"/>
     <script src="${lightboxJs}"></script>
 
     <spring:url value="/resources/js/main.js" var="mainJs"/>
