@@ -32,8 +32,8 @@ public class PieController {
     }
 
     @RequestMapping(method= RequestMethod.GET)
-    public ModelAndView fiendAllShowCase() {
-        return new ModelAndView("/index");
+    public String fiendAllShowCase() {
+        return "forward:/view/index.html";
     }
 
     @RequestMapping(value = "/profile", method= RequestMethod.GET)
