@@ -9,13 +9,15 @@ app.config(['$routeProvider', function($routeProvider) {
 
 }]);
 
-app.controller('GetShowCase',function ($scope, $http){
-    ymaps.ready(function(){
-        resolveCity($scope);
-    });
+app.controller('GetShowCase',function ($scope, $rootScope, $http){
+    if ($rootScope.city == "undefined" || $rootScope.city == null) {
+        ymaps.ready(function () {
+            resolveCity($scope, $rootScope);
+        });
+    }
     $http({
         method: 'GET',
-        url: '/getShowCaseList/' + $scope.city.id
+        url: '/getShowCaseList/' + $rootScope.city.id
     }).then(function (response){
         $scope.showCase = response.data;
     },function (error){
@@ -23,17 +25,17 @@ app.controller('GetShowCase',function ($scope, $http){
     });
 });
 
-app.controller('CityController', function($scope,$route) {
+app.controller('CityController', function($scope, $rootScope, $route) {
 
     $scope.chooseCity = function (cityInput) {
         if (cityInput == 77) {
-            $scope.city = {
+            $rootScope.city = {
                 id: 77,
                 name: 'Москва'
             }
         }
         if (cityInput == 16) {
-            $scope.city = {
+            $rootScope.city = {
                 id: 16,
                 name: 'Казань'
             }
@@ -42,22 +44,22 @@ app.controller('CityController', function($scope,$route) {
     };
 });
 
-function resolveCity($scope){
-    var cityFilter = $scope.city;
+function resolveCity($scope, $rootScope){
+    var cityFilter = $rootScope.city;
 
     if (cityFilter == "undefined" || cityFilter == null) {
         var cityLocation = ymaps.geolocation.city;
         if (cityLocation == "Казань") {
-            $scope.city = {
+            $rootScope.city = {
                 id: 16,
                 name: 'Казань'
             }
         } else {
-            $scope.city = {
+            $rootScope.city = {
                 id: 77,
                 name: 'Москва'
             }
         }
     }
-    $scope.cityInput = $scope.city.id;
+    $scope.cityInput = $rootScope.city.id;
 }
