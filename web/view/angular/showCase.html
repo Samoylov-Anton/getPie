@@ -1,0 +1,26 @@
+<div ng-repeat="showCase in showCase" class="jumbotron" style="padding-bottom: 5px; padding-top: 8px;">
+    <div class="row">
+        <img ng-src="{{showCase.avatar}}" class="img-rounded pull-left"
+             style="height: 50px; width: 50px;margin-right: 5px;"/>
+        <h5 style="margin-bottom: 0px;"><a href="/showCase/{{showCase.avatar}}"
+                                           style="color: #34495e; margin-bottom: 0px;">{{showCase.name}}</a></h5><br>
+
+        <p style="height: 50px;font-size: 86%; line-height: 2.067;">{{showCase.note}}</p></div>
+    <div class="row" style="margin-top: 5px;">
+
+        <div class="col-xs-5 col-sm-3" ng-repeat="imageList in showCase.imageList"
+             style="height: 120px; width: 120px; padding: 0px; margin-right: 10px;margin-left: 10px;">
+            <a rel="lightbox" href="/images/{{imageList.largePath}}">
+                <img ng-src="/images/{{imageList.litePath}}" class="img-rounded"
+                     style="width: 100%; height: 100%; object-fit: cover;">
+            </a></div>
+
+        <div class="pull-right" style="margin-top:10px;"><h4>
+            <span class="glyphicon glyphicon-rub" aria-hidden="true"
+                  style="margin-right:10px;">{{showCase.minSum}}</span>
+            <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true">{{showCase.like}}</span>
+        </h4></div>
+    </div>
+</div>
+
+

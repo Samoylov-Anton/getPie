@@ -27,9 +27,15 @@
 
     <script src="/resources/js/main.js" charset="utf-8"></script>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-resource.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
+
+    <script src="/view/angular/app.js"></script>
+
 </head>
 
-<body>
+<body  ng-app ="getPieApp">
 <!-- Navigation -->
 <nav class="navbar navbar-fixed-top navbar-inverse">
     <div class="container">
@@ -49,7 +55,8 @@
                 <li><a href="/profile">Профиль</a></li>
                 <li><a href="/contact">Контакты</a></li>
             </ul>
-            <a id="city" data-toggle="modal" data-target="#cityModal"></a>
+            <div ng-controller="CityController">
+            <a data-toggle="modal" data-target="#cityModal">{{city.name}}</a>
             <div class="modal fade" role="dialog" id="cityModal" tabindex="-1" aria-labelledby="gridModalLabel"
                  data-backdrop="false" style="background-color: rgba(0, 0, 0, 0.5); display: none;">
                 <div class="modal-dialog" role="document">
@@ -61,22 +68,22 @@
                         <form class="form">
                             <div class="modal-body">
                                 <div class="radio">
-                                    <label><input type="radio" name="optradio" value="77">Москва</label>
+                                    <label><input type="radio" ng-model="cityInput" ng-value="77">Москва</label>
                                 </div>
                                 <div class="radio">
-                                    <label><input type="radio" name="optradio" value="16">Казань</label>
+                                    <label><input type="radio" ng-model="cityInput" ng-value="16">Казань</label>
                                 </div>
                                 <div class="radio">
-                                    <label><input type="radio" name="optradio">Option 3</label>
+                                    <label><input type="radio" ng-model="cityInput" ng-value="3">Option 3</label>
                                 </div>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-primary" onclick="show();">Выбрать</button>
+                                <button type="button" class="btn btn-primary" ng-click="chooseCity(cityInput);">Выбрать</button>
                             </div>
                         </form>
-
                     </div>
                 </div>
+            </div>
             </div>
             <button type="button" class="btn btn-primary pull-right" style="margin-top:10px;">Войти</button>
         </div><!-- /.nav-collapse -->
@@ -88,8 +95,7 @@
     <div class="row row-offcanvas row-offcanvas-right">
 
         <div id="showCase" class="col-xs-12 col-sm-9">
-
-
+            <div ng-view></div>
         </div><!--/.col-xs-12.col-sm-9-->
 
         <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar">
@@ -100,11 +106,11 @@
         </div>
     </div><!--/row-->
 </div><!--/.container-->
-<script type="text/javascript">
+<!--<script type="text/javascript">
     ymaps.ready(function(){
         window.onload = reloadPage();
     });
-</script>
+</script>-->
     <!-- Footer -->
     <footer>
         <div class="row">
