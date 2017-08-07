@@ -1,0 +1,100 @@
+<div class="container">
+
+    <div class="row row-offcanvas row-offcanvas-right">
+
+        <div class="col-xs-12 col-sm-9">
+            <div class="jumbotron">
+                <div class="row">
+
+                    <img src="{{profile.avatar}}" class="img-rounded pull-left"
+                         style="height: 100px; width: 100px;margin-right: 5px;"/>
+
+                    <p>{{profile.note}}</p>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row" ng-controller="TabController">
+                    <div>
+                        <ul class="nav nav-tabs">
+                            <li ng-class="{ active: isSet(1) }">
+                                <a href ng-click="setTab(1)">Home</a>
+                            </li>
+                            <li ng-class="{ active: isSet(2) }">
+                                <a href ng-click="setTab(2)">Profile</a>
+                            </li>
+                            <li ng-class="{ active: isSet(3) }">
+                                <a href ng-click="setTab(3)">Messages</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <div class="jumbotron">
+                            <div ng-show="isSet(1)">
+                                <div id="chats">
+                                    <!--main content start-->
+                                    <section id="main-content">
+                                        <section class="wrapper site-min-height">
+                                            <!-- page start-->
+                                            <div class="chat-room mt">
+                                                <aside class="mid-side">
+
+                                                    <div class="room-desk">
+
+                                                        <div class="room-box">
+                                                            <h5 class="text-primary"><a href="chat_room.html">Dashboard</a></h5>
+                                                            <p>We talk here about our dashboard. No support given.</p>
+                                                            <p><span class="text-muted">Admin :</span> Marcel Newman | <span class="text-muted">Members :</span> 98 | <span class="text-muted">Last Activity :</span> 2 min ago</p>
+                                                        </div>
+                                                        <div class="room-box">
+                                                            <h5 class="text-primary"><a href="chat_room.html">Support</a></h5>
+                                                            <p>Support chat for Dashgum. Purchase ticket needed.</p>
+                                                            <p><span class="text-muted">Admin :</span> Marcel Newman | <span class="text-muted">Member :</span> 44 | <span class="text-muted">Last Activity :</span> 15 min ago</p>
+                                                        </div>
+                                                        <div class="room-box">
+                                                            <h5 class="text-primary"><a href="chat_room.html">MaxFront</a></h5>
+                                                            <p>Technical support for our front-end. No customization.</p>
+                                                            <p><span class="text-muted">Admin :</span> Marcel Newman | <span class="text-muted">Member :</span> 22 | <span class="text-muted">Last Activity :</span> 15 min ago</p>
+                                                        </div>
+                                                    </div>
+                                                </aside>
+                                            </div>
+                                            <!-- page end-->
+                                        </section><! --/wrapper -->
+                                    </section><!-- /MAIN CONTENT -->
+                                </div>
+                            </div>
+                            <div ng-show="isSet(2)">
+                                <div id="profile">
+                                    <button class="btn btn-primary pull-right" style="margin-top:10px;" onclick="window.location.href='/showCase/create'">Добавить витрину</button>
+                                    <div ng-repeat="caseModelList in profile.caseModelList">
+                                        <div class="jumbotron">
+                                            <div class="panel panel-default" style="margin-top: 10px;">
+                                                <div class="panel-body">
+                                                    <span><p>{{caseModelList.name}}</p></span>
+                                                    <button class="btn btn-primary pull-right" style="margin-top:10px;">
+                                                        <a href="#!/profile/showCase/edit/{{caseModelList.id}}">Редактировать</a>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div ng-show="isSet(3)">
+                                <h1>Messages</h1>
+                                <p> Some messages </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+    <!--/.col-xs-12.col-sm-9-->
+    <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar">
+        <div class="jumbotron">
+            <p>Разделы:</p>
+
+        </div>
+    </div>
+
+</div><!--/.container-->

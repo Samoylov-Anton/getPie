@@ -34,8 +34,8 @@
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <!-- Example: a logical view note of 'showMessage' is mapped to '/WEB-INF/jsp/showMessage.jsp' -->
         <property name="order" value="1" />
-        <property name="prefix" value="/WEB-INF/view/" />
-        <property name="suffix" value=".jsp" />
+        <property name="prefix" value="/view/" />
+        <property name="suffix" value=".html" />
     </bean>
 
     <!-- Static Resources Configuration (get access to static sources such as CSS and JavaScript files) -->
